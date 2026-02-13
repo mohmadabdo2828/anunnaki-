@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anunnaki</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;scroll-behavior:smooth;}
+body{background:#000;color:#fff;}
+
+/* NAVBAR */
+.navbar{
+  position:sticky; top:0; z-index:1000; background:#000; border-bottom:1px solid #222;
+}
+.nav-container{max-width:1300px;margin:auto;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;}
+.logo img{height:70px;width:auto;transition:0.3s;}
+.logo img:hover{transform:scale(1.05);}
+.nav-links{list-style:none;display:flex;align-items:center;gap:30px;}
+.nav-links li a{text-decoration:none;color:#fff;font-weight:600;letter-spacing:1px;font-size:16px;position:relative;transition:0.3s;}
+.nav-links li a:not(.museum-link):hover{color:#00ffff;text-shadow:0 0 5px #00ffff,0 0 10px #00ffff,0 0 20px #00ffff;}
+.museum-link{color:#D4AF37;font-weight:700;transition:0.3s;}
+.museum-link:hover{color:#FFD700;text-shadow:0 0 5px #FFD700,0 0 10px #FFD700,0 0 20px #FFD700,0 0 30px #FFD700,0 0 40px #FFD700;}
+.menu-icon{display:none;font-size:32px;color:#00ffff;cursor:pointer;}
+@media(max-width:768px){
+  .nav-links{position:absolute;top:85px;left:0;width:100%;background:#000;flex-direction:column;gap:20px;padding:25px 0;display:none;z-index:999;}
+  .nav-links.show{display:flex;}
+  .menu-icon{display:block;}
+  .nav-links li a{font-size:18px;}
+}
+
+/* HERO */
+#hero{background:#111 url('placeholder-hero.jpg') center/cover no-repeat; height:90vh; position:relative; display:flex; align-items:center; justify-content:center;}
+#hero::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);}
+#hero-content{position:relative;text-align:center;max-width:800px;padding:0 20px;}
+#hero h1{font-size:48px;color:#00ffff;text-shadow:0 0 10px #00ffff,0 0 20px #0f0;margin-bottom:15px;}
+#hero p{font-size:20px;color:#0f0;text-shadow:0 0 5px #0f0;margin-bottom:30px;}
+#hero a{padding:15px 35px;background:#00ff00;color:#000;font-size:18px;border-radius:8px;font-weight:bold;text-decoration:none;text-shadow:0 0 5px #fff;}
+
+/* ABOUT */
+#about{background:#111;padding:80px 20px;text-align:center;}
+#about h2{font-size:36px;color:#00ffff;text-shadow:0 0 10px #00ffff;margin-bottom:50px;}
+#about h3{color:#0f0;text-shadow:0 0 5px #0f0;margin-top:25px;}
+#about p{font-size:18px;line-height:1.6;color:#ccc;margin-top:8px;}
+
+/* COLLECTION */
+#collection{background:#111;padding:80px 20px;text-align:center;}
+#collection h2{font-size:36px;color:#00ffff;text-shadow:0 0 10px #00ffff;margin-bottom:40px;}
+.products-container{display:flex;flex-wrap:wrap;justify-content:center;gap:40px;}
+.product{text-align:center;width:300px;}
+.product img{width:100%;border-radius:12px;}
+.colors{display:flex;justify-content:center;gap:8px;margin-top:10px;}
+.color{width:20px;height:20px;border-radius:50%;cursor:pointer;border:1px solid #fff;transition:0.3s;}
+.color:hover{transform:scale(1.2);}
+
+/* BUTTONS UNDER COLLECTION */
+.collection-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:40px;}
+.collection-buttons a{
+  display:inline-block;padding:16px 40px;border-radius:12px;font-weight:900;letter-spacing:1.5px;text-decoration:none;transition:all 0.3s ease;
+}
+.whatsapp-btn{background:#25D366;color:#fff;box-shadow:0 0 15px rgba(37,211,102,0.6), inset 0 0 10px rgba(255,255,255,0.3);}
+.whatsapp-btn:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(37,211,102,0.9),0 0 50px rgba(37,211,102,0.8);}
+.museum-btn{background:linear-gradient(135deg,#d4af37,#ffd700,#b8860b);color:#111;box-shadow:0 0 15px rgba(212,175,55,0.6), inset 0 0 10px rgba(255,255,255,0.3);}
+.museum-btn:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,215,0,0.9),0 0 50px rgba(212,175,55,0.8);}
+
+/* FAQ */
+#faq{background:#0e1117;padding:80px 20px;color:#fff;text-align:center;}
+#faq h2{font-size:36px;color:#00ffff;text-shadow:0 0 10px #00ffff;margin-bottom:50px;}
+#faq h3{color:#0f0;margin-bottom:8px;}
+#faq p{color:#ccc;line-height:1.6;margin-bottom:20px;}
+
+/* JOIN US */
+#join-us{background:linear-gradient(180deg,#0b0f14,#000);padding:80px 20px;text-align:center;color:#fff;}
+#join-us h2{font-size:36px;color:#00ffff;text-shadow:0 0 10px #00ffff;margin-bottom:20px;}
+#join-us p{max-width:700px;margin:0 auto 40px;font-size:18px;line-height:1.6;color:#ccc;}
+#join-us a{display:inline-block;margin:10px;padding:14px 32px;border-radius:30px;font-weight:bold;text-decoration:none;text-shadow:0 0 5px #fff;}
+#join-us a.instagram{background:#0f0;color:#000;}
+#join-us a.tiktok{background:#00ffff;color:#000;}
+#join-us a.snapchat{background:#FFFC00;color:#000;}
+#join-us .divider{width:120px;height:2px;background:#00ffff;margin:0 auto 30px;box-shadow:0 0 10px #00ffff;}
+
+/* FOOTER */
+footer{color:#888;text-align:center;padding:30px 20px;font-size:14px;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  #hero h1{font-size:36px;}
+  #hero p{font-size:16px;}
+  .product{width:90%;}
+  .collection-buttons a{padding:14px 30px;font-size:16px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="logo"><img src="placeholder-logo.png" alt="ANUNNAKI LOGO"></a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#join-us">Join Us</a></li>
+      <li><a href="VIP.html" class="museum-link">Anunnaki Museum</a></li>
+    </ul>
+    <div class="menu-icon" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="hero-content">
+    <h1>ANUNNAKI</h1>
+    <p>Not just sneakers… a full party experience</p>
+    <a href="#about">Learn More</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Anunnaki</h2>
+  <div>
+    <h3>Our Story</h3>
+    <p>Anunnaki started with a vision to combine unique sneaker designs with the underground party culture.</p>
+    <h3>Our Vision</h3>
+    <p>To be the ultimate brand that connects fashion, music, and lifestyle.</p>
+    <h3>Why Anunnaki?</h3>
+    <p>Because we bring unique designs, high-quality sneakers, and a vibe that no other brand can match.</p>
+    <!-- داخل سكشن About -->
+<div style="margin-top:40px;">
+  <a href="#collection" class="about-btn">
+    Choose Your Product
+  </a>
+</div>
+
+<style>
+.about-btn{
+  display:inline-block;
+  padding:16px 40px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#00ff00,#00cc00,#00ff00);
+  color:#000;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-decoration:none;
+  box-shadow:
+    0 0 15px rgba(0,255,0,0.6),
+    inset 0 0 10px rgba(255,255,255,0.3);
+  transition:all 0.3s ease;
+}
+.about-btn:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 0 25px rgba(0,255,0,0.9),
+    0 0 50px rgba(0,255,0,0.8);
+}
+</style>
+
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section id="collection">
+  <h2>Our Collection</h2>
+  <div class="products-container">
+    <!-- PRODUCT 1 -->
+    <div class="product">
+      <img id="shoe1" src="placeholder1.jpg">
+      <div class="colors">
+        <span class="color" style="background:red" onclick="document.getElementById('shoe1').src='placeholder-red1.jpg'"></span>
+        <span class="color" style="background:blue" onclick="document.getElementById('shoe1').src='placeholder-blue1.jpg'"></span>
+        <span class="color" style="background:green" onclick="document.getElementById('shoe1').src='placeholder-green1.jpg'"></span>
+        <span class="color" style="background:black" onclick="document.getElementById('shoe1').src='placeholder-black1.jpg'"></span>
+        <span class="color" style="background:white" onclick="document.getElementById('shoe1').src='placeholder-white1.jpg'"></span>
+      </div>
+    </div>
+    <!-- PRODUCT 2 -->
+    <div class="product">
+      <img id="shoe2" src="placeholder2.jpg">
+      <div class="colors">
+        <span class="color" style="background:red" onclick="document.getElementById('shoe2').src='placeholder-red2.jpg'"></span>
+        <span class="color" style="background:blue" onclick="document.getElementById('shoe2').src='placeholder-blue2.jpg'"></span>
+        <span class="color" style="background:green" onclick="document.getElementById('shoe2').src='placeholder-green2.jpg'"></span>
+        <span class="color" style="background:black" onclick="document.getElementById('shoe2').src='placeholder-black2.jpg'"></span>
+        <span class="color" style="background:white" onclick="document.getElementById('shoe2').src='placeholder-white2.jpg'"></span>
+      </div>
+    </div>
+    <!-- PRODUCT 3 -->
+    <div class="product">
+      <img id="shoe3" src="placeholder3.jpg">
+      <div class="colors">
+        <span class="color" style="background:red" onclick="document.getElementById('shoe3').src='placeholder-red3.jpg'"></span>
+        <span class="color" style="background:blue" onclick="document.getElementById('shoe3').src='placeholder-blue3.jpg'"></span>
+        <span class="color" style="background:green" onclick="document.getElementById('shoe3').src='placeholder-green3.jpg'"></span>
+        <span class="color" style="background:black" onclick="document.getElementById('shoe3').src='placeholder-black3.jpg'"></span>
+        <span class="color" style="background:white" onclick="document.getElementById('shoe3').src='placeholder-white3.jpg'"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="collection-buttons">
+    <a href="https://wa.me/201024345675" target="_blank" class="whatsapp-btn">Order via WhatsApp</a>
+    <a href="VIP.html" target="_blank" class="museum-btn">ANUNNAKI MUSEUM</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div>
+    <h3>How do I place an order?</h3>
+    <p>Choose your favorite design, take a screenshot, and send it to us on WhatsApp.</p>
+    <h3>Do you offer custom colors?</h3>
+    <p>Yes. Each sneaker can be customized to match your vibe and party style.</p>
+    <h3>How long does delivery take?</h3>
+    <p>Production usually takes a few days, and shipping is done as fast as possible.</p>
+    <h3>Is Anunnaki limited edition?</h3>
+    <p>Yes. Our drops are limited to keep every piece exclusive.</p>
+  </div>
+</section>
+
+<!-- JOIN US -->
+<section id="join-us">
+  <h2>Join The Anunnaki Movement</h2>
+  <p>Follow us and be part of the underground culture. Exclusive drops, party vibes, and real community.</p>
+  <a href="https://www.instagram.com/anunnaki.party" target="_blank" class="instagram">Instagram</a>
+  <a href="https://tiktok.com/@YOUR_TIKTOK" target="_blank" class="tiktok">TikTok</a>
+  <a href="https://www.snapchat.com/add/YOUR_SNAPCHAT" target="_blank" class="snapchat">Snapchat</a>
+  <div class="divider"></div>
+  <h3>ANUNNAKI</h3>
+  <p>Anunnaki is a sneaker brand inspired by underground parties, fearless expression, and limited designs made to stand out.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Anunnaki. All rights reserved.
+</footer>
+
+</body>
+</html>

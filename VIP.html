@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anunnaki Museum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
+/* BACKGROUND */
+body{
+  background:radial-gradient(circle at top,#0b1a1a,#000 70%);
+  color:#eaffff;
+  min-height:100vh;
+}
+
+/* CENTER */
+.center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+/* PASSWORD BOX */
+#gate{
+  text-align:center;
+  padding:50px 40px;
+  background:rgba(0,255,200,0.05);
+  border:1px solid rgba(0,255,200,0.35);
+  border-radius:18px;
+  box-shadow:0 0 60px rgba(0,255,200,0.25);
+  max-width:400px;
+  width:100%;
+}
+
+#gate h1{
+  letter-spacing:4px;
+  color:#7fffe6;
+  text-shadow:0 0 20px rgba(0,255,200,.8);
+  margin-bottom:20px;
+}
+
+#gate p{
+  color:#9ff;
+  opacity:.85;
+  margin-bottom:30px;
+}
+
+#gate input{
+  padding:14px 20px;
+  width:100%;
+  border-radius:30px;
+  border:1px solid rgba(0,255,200,.4);
+  background:#000;
+  color:#0ff;
+  font-size:16px;
+  outline:none;
+  text-align:center;
+}
+
+#gate button{
+  margin-top:20px;
+  padding:14px 40px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  background:linear-gradient(135deg,#d4af37,#ffd700,#b8860b);
+  color:#111;
+  font-weight:bold;
+  letter-spacing:2px;
+  box-shadow:0 0 30px rgba(212,175,55,.7);
+}
+
+#gate span{
+  display:block;
+  margin-top:15px;
+  color:#f66;
+  display:none;
+  font-weight:bold;
+}
+
+/* MUSEUM */
+#museum{
+  display:none;
+  padding:80px 20px;
+  text-align:center;
+}
+
+/* TITLE */
+#museum h2{
+  font-size:40px;
+  letter-spacing:6px;
+  color:#d4af37;
+  text-shadow:0 0 35px rgba(212,175,55,.9);
+  margin-bottom:20px;
+}
+
+/* SECRECY */
+.secrecy{
+  max-width:700px;
+  margin:0 auto 70px;
+  padding:22px 30px;
+  border-radius:14px;
+  background:rgba(0,255,200,0.05);
+  border:1px solid rgba(0,255,200,0.25);
+  box-shadow:0 0 35px rgba(0,255,200,0.15);
+  letter-spacing:2px;
+  color:#7fffe6;
+  text-shadow:0 0 12px rgba(0,255,200,0.6);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* ARTIFACT */
+.artifact{
+  padding:25px;
+  border-radius:18px;
+  background:rgba(0,255,200,0.04);
+  border:1px solid rgba(0,255,200,0.3);
+  box-shadow:0 0 35px rgba(0,255,200,0.18);
+  transition:.4s;
+}
+
+.artifact:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 60px rgba(0,255,200,0.45);
+}
+
+.artifact img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:18px;
+}
+
+.artifact h3{
+  letter-spacing:3px;
+  color:#d4af37;
+  margin-bottom:8px;
+}
+
+.artifact p{
+  font-size:14px;
+  opacity:.8;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  #gate{
+    padding:30px 20px;
+  }
+  #gate h1{
+    font-size:28px;
+  }
+  #gate p{
+    font-size:14px;
+  }
+  #gate input{
+    font-size:14px;
+  }
+  #gate button{
+    font-size:14px;
+    padding:12px 30px;
+  }
+  #museum h2{
+    font-size:28px;
+  }
+  .secrecy{
+    padding:15px 20px;
+    margin-bottom:40px;
+  }
+  .artifact{
+    padding:15px;
+  }
+  .artifact p{
+    font-size:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD GATE -->
+<div class="center" id="gate">
+  <div>
+    <h1>ANUNNAKI MUSEUM</h1>
+    <p>Restricted Archive – Authorized Access Only</p>
+    <input type="password" id="pass" placeholder="Enter Access Code">
+    <br>
+    <button onclick="unlock()">ACCESS</button>
+    <span id="error">ACCESS DENIED</span>
+  </div>
+</div>
+
+<!-- MUSEUM CONTENT -->
+<section id="museum">
+
+  <h2>ANUNNAKI ARCHIVE</h2>
+
+  <div class="secrecy">
+    Preserve the secrecy of these artifacts.<br>
+    They were never meant to be revealed.
+  </div>
+
+  <div class="grid">
+
+    <!-- ARTIFACT 1 -->
+    <div class="artifact">
+      <img src="PUT-IMAGE-HERE" alt="Artifact X-01">
+      <h3>Artifact X-01</h3>
+      <p>Recovered from underground party rituals.</p>
+    </div>
+
+    <div class="artifact">
+      <img src="PUT-IMAGE-HERE" alt="Artifact X-02">
+      <h3>Artifact X-02</h3>
+      <p>Energy-coded handmade sneaker.</p>
+    </div>
+
+    <div class="artifact">
+      <img src="PUT-IMAGE-HERE" alt="Artifact X-03">
+      <h3>Artifact X-03</h3>
+      <p>Not meant for public circulation.</p>
+    </div>
+
+    <div class="artifact">
+      <img src="PUT-IMAGE-HERE" alt="Artifact X-04">
+      <h3>Artifact X-04</h3>
+      <p>Created under lunar frequency.</p>
+    </div>
+
+    <div class="artifact">
+      <img src="PUT-IMAGE-HERE" alt="Artifact X-05">
+      <h3>Artifact X-05</h3>
+      <p>Classified Anunnaki material.</p>
+    </div>
+
+    <div class="artifact">
+      <img src="PUT-IMAGE-HERE" alt="Artifact X-06">
+      <h3>Artifact X-06</h3>
+      <p>One of six surviving pieces.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function unlock(){
+  const password="ANUNNAKI-X";
+  const input=document.getElementById("pass").value;
+  const error=document.getElementById("error");
+  if(input===password){
+    document.getElementById("gate").style.display="none";
+    document.getElementById("museum").style.display="block";
+  }else{
+    error.style.display="block";
+    setTimeout(()=>{error.style.display="none"},2000);
+  }
+}
+</script>
+
+</body>
+</html>
